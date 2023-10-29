@@ -66,8 +66,11 @@ public static class PredefinedAssemblyUtil {
             }
         }
         
-        AddTypesFromAssembly(assemblyTypes[AssemblyType.AssemblyCSharp], interfaceType, types);
-        AddTypesFromAssembly(assemblyTypes[AssemblyType.AssemblyCSharpFirstPass], interfaceType, types);
+        assemblyTypes.TryGetValue(AssemblyType.AssemblyCSharp, out var assemblyCSharpTypes);
+        AddTypesFromAssembly(assemblyCSharpTypes, interfaceType, types);
+
+        assemblyTypes.TryGetValue(AssemblyType.AssemblyCSharpFirstPass, out var assemblyCSharpFirstPassTypes);
+        AddTypesFromAssembly(assemblyCSharpFirstPassTypes, interfaceType, types);
         
         return types;
     }
