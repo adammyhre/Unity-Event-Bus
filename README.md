@@ -1,4 +1,6 @@
 ﻿# Unity C# Event Bus
+ 
+ ![EventBus](https://github.com/adammyhre/Unity-Event-Bus/assets/38876398/1b053da8-4a22-4bef-a052-6bf7f3e24b7d)
 
 ## Description
 This EventBus system provides a way to create decoupled architectures in Unity projects. It allows communication between different parts of an application without requiring direct references.
@@ -10,7 +12,7 @@ This EventBus system contains several C# classes residing in the Scripts\EventBu
 
 2. `EventBinding.cs` - IEventBinding interface and class definition for EventBinding, which is used to bind functions to events.
 
-3. `Events.cs` - IEvent interface and sample code which shows how to define custom events.
+3. `Events.cs` - IEvent interface and sample code, which shows how to define custom events.
 
 4. `PredefinedAssemblyUtil.cs` - Utility class for locating assemblies and finding types within them. See [Unity Documentation](https://docs.unity3d.com/Manual/ScriptCompileOrderFolders.html).
 
@@ -32,6 +34,8 @@ EventBinding<PlayerEvent> playerEventBinding;
 void OnEnable() {    
     playerEventBinding = new EventBinding<PlayerEvent>(HandlePlayerEvent);
     EventBus<PlayerEvent>.Register(playerEventBinding);
+
+    // Can Add or Remove Actions to/from the EventBinding
 }
 
 void OnDisable() {
@@ -52,7 +56,7 @@ void HandlePlayerEvent(PlayerEvent playerEvent) {
 
 ## YouTube
 
-[**Watch the tutorial video here**](https://www.youtube.com/@git-amend?sub_confirmation=1)
+[**Watch the tutorial video here**](https://youtu.be/4_DTAnigmaQ)
 
 You can also check out my [YouTube channel](https://www.youtube.com/@git-amend?sub_confirmation=1) for more Unity content.
 
