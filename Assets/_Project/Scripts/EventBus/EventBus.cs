@@ -8,9 +8,13 @@ public static class EventBus<T> where T : IEvent {
     public static void Deregister(EventBinding<T> binding) => bindings.Remove(binding);
 
     public static void Raise(T @event) {
-        foreach (var binding in bindings) {
-            binding.OnEvent.Invoke(@event);
-            binding.OnEventNoArgs.Invoke();
+        var snapshot = new HashSet<IEventBinding<T>>(bindings);
+
+        foreach (var binding in snapshot) {
+            if (bindings.Contains(binding)) {
+                binding.OnEvent.Invoke(@event);
+                binding.OnEventNoArgs.Invoke();
+            }
         }
     }
 
